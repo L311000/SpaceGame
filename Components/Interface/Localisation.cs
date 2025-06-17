@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Components.Interface
 {
-    public class Localisation
+    public class Localisation : Component_Base
     {
         public string Name { get; set; }
         public int Priority { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Components.Factions
 {
-    public class FactionGovernment_base
+    public class FactionGovernment_base : Component_Base
     {
         public FactionGovernmentCategories Category { get; set; }
         public Localisation Leader_Title_Male { get; set; }
@@ -20,6 +20,5 @@ namespace Components.Factions
         public Game_Character Leader_Successor { get; set; }
 
         public bool HasElections { get; set; }
-        public List<Game_Character> Members { get; set; } = [];
     }
 }

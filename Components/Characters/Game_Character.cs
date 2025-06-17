@@ -9,7 +9,7 @@ using System.Windows.Navigation;
 
 namespace Components.Characters
 {
-    public class Game_Character
+    public class Game_Character : Component_Base
     {
         public Localisation FirstName { get; set; }
         public List<Localisation> MiddleNames { get; set; } = [];
@@ -35,7 +35,7 @@ namespace Components.Characters
         #region Age
         private int GetAge()
         {
-            var current = Globals.CurrentDate;
+            var current = Globals.Settings_Game.CurrentDate;
             int age = current.Year - Birthdate.Year;
             if (current < Birthdate.AddYears(age))
             {
@@ -54,7 +54,7 @@ namespace Components.Characters
         {
             if (Partner == null)
             { return false; }
-            if (Partner.Deathdate >= Globals.CurrentDate)
+            if (Partner.Deathdate >= Globals.Settings_Game.CurrentDate)
             {
                 Partner = null;
                 return false;
@@ -66,7 +66,7 @@ namespace Components.Characters
         {
             if (Deathdate != null)
             {
-                if (Globals.CurrentDate >= Deathdate)
+                if (Globals.Settings_Game.CurrentDate >= Deathdate)
                 {
                     return false;
                 }

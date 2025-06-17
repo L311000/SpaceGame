@@ -8,24 +8,9 @@ namespace Components
 {
     public static class Globals
     {
-        public static DateTime CurrentDate { get => GetCurrent(); set => SetCurrent(value) ; }
-        public static int CharacterID { get; set; } = 0;
-
-        public static int GetNextCharacterID()
-        {
-            CharacterID++;
-            return CharacterID - 1;
-        }
-
-        private static DateTime GetCurrent()
-        {
-            return CurrentDate.Date;
-        }
-        private static DateTime SetCurrent(DateTime dt)
-        {
-            var d = dt.Date;
-            return d;
-        }
+        
+        public static SessionSettings Settings_Game { get; set; }
+        
     }
 
     public enum LocalisationLanguages

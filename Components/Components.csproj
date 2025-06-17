@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Graphical\" />
-    <Folder Include="Map\" />
+    <Folder Include="Logic\" />
   </ItemGroup>
 
 </Project>

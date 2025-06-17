@@ -1,4 +1,5 @@
-﻿using Components.Interface;
+﻿using Components.Characters;
+using Components.Interface;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Components.Factions
 {
-    public class Faction
+    public class Faction : Component_Base
     {
         public Localisation Name { get; set; }
         public Localisation Adjective { get; set; }
@@ -20,5 +21,6 @@ namespace Components.Factions
         public Color Color3 { get; set; }
 
         public bool Dynasty_CoA { get; set; }
+        public Namelist Namelist { get; set; }
     }
 }

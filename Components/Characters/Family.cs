@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace Components.Characters
 {
-    public class Family
+    public class Family : Component_Base
     {
         public Localisation Name {  get; set; }
         public Localisation Prefix { get; set; }
         public List<Game_Character> Characters { get; set; } = new();
+        public DateTime Founded { get; set; }
+        public DateTime? Extinct { get; set; }
     }
 }
