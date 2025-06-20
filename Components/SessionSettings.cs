@@ -9,8 +9,8 @@ namespace Components
 {
     public class SessionSettings
     {
-        public DateTime CurrentDate { get => GetCurrent(); set => SetCurrent(value); }
-        public DateTime? EndDate { get; set; }
+        public Game_Date CurrentDate { get => GetCurrent(); set => SetCurrent(value); }
+        public Game_Date? EndDate { get; set; }
         public static long CharacterID_Counter { get; set; } = 0;
         public static int Age_Adult { get; set; }
         public static int Age_Teenager { get; set; }
@@ -24,34 +24,19 @@ namespace Components
             return CharacterID_Counter - 1;
         }
 
-        public DateTime GetCurrent()
+        public Game_Date GetCurrent()
         {
-            return CurrentDate.Date;
-        }
-        public DateTime SetCurrent(DateTime dt)
-        {
-            var d = dt.Date;
-            return d;
+            return CurrentDate;
         }
 
-        public void AddDay()
+        public void SetCurrent(Game_Date gd)
         {
-            CurrentDate = CurrentDate.AddDays(1);
+            CurrentDate = gd;
         }
 
-        public void OnAction_NewDay()
+        public void OnAction_Date_Changed()
         {
-            AddDay();
-        }
-
-        public void OnAction_MonthChange()
-        {
-
-        }
-
-        public void OnAction_YearChange()
-        {
-
+            
         }
 
         public void OnAction_WarDeclaration()

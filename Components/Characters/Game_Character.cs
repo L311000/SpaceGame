@@ -25,12 +25,12 @@ namespace Components.Characters
         public int Age { get => GetAge(); set => SetAge(value); }
 
         public bool InRelationship { get => Check_InRelationship(); }
+        public bool HasChildren { get => Check_HasChildren();}
+        public RelationshipStatus Relationship_Status_Type { get; set; }
         public bool Male { get; set; }
         public bool AI { get; set; }
         public bool AI_enabled { get; set; }
         public bool Alive { get => Check_IsAlive(); }
-
-        #region Property Methods
 
         #region Age
         private int GetAge()
@@ -48,13 +48,17 @@ namespace Components.Characters
             Age = val;
         }
         #endregion
-        #endregion
         #region Checks
         private bool Check_InRelationship()
         {
             if (Partner == null)
             { return false; }
             if (Partner.Deathdate >= Globals.Settings_Game.CurrentDate)
+            {
+                Partner = null;
+                return false;
+            }
+            if (Relationship_Status_Type == RelationshipStatus.Single || Relationship_Status_Type == RelationshipStatus.Unable)
             {
                 Partner = null;
                 return false;
@@ -73,6 +77,41 @@ namespace Components.Characters
             }
             return true;
         }
+
+        private bool Check_HasChildren()
+        {
+            foreach (var c in Family.Characters)
+            {
+                if (c.Father == this || c.Mother == this)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         #endregion
+
+        public List<Game_Character> GetChildren(bool onlyAlive)
+        {
+            var l = new List<Game_Character>();
+            foreach (var c in Family.Characters)
+            {
+                if (c.Father == this || c.Mother == this)
+                {
+                    if (onlyAlive)
+                    {
+                        if (c.Alive)
+                        {
+                            l.Add(c);
+                        }
+                    }
+                    else
+                    {
+                        l.Add(c);
+                    }
+                }
+            }
+            return l;
+        }
     }
 }

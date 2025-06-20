@@ -14,5 +14,6 @@ namespace Components.Map
         public List<PopulationUnit> Population { get; set; } = new List<PopulationUnit>();
         public Localisation Name { get; set; }
         public Faction Owner { get; set; }
+        public Solar_System System { get; set; }
     }
 }
